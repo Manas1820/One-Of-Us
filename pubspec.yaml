@@ -43,6 +43,8 @@ dependencies:
   cloud_firestore: ^0.14.0+2
   animated_floatactionbuttons: ^0.1.0
 
+  firebase_auth: ^0.18.0+1
+  google_sign_in: ^4.5.3
 
 
 dev_dependencies:
