@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "584188970946",
+    "project_id": "map-pro-6fffe",
+    "storage_bucket": "map-pro-6fffe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584188970946:android:08a6cf164b87e5d252785b",
+        "android_client_info": {
+          "package_name": "com.permag.amongus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584188970946-ks7ag5pqufaqq2h0te9ook2g3ulaqvl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR-v-cT359NVaPmlds1LnKEnlmZmmDgNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584188970946-ks7ag5pqufaqq2h0te9ook2g3ulaqvl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
