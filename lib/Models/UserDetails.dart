@@ -9,7 +9,7 @@ class UserProfile {
     this.profileImage,
   });
 
-  UserProfile.newuser(userId, name, profileImage, emailId) {
+  UserProfile.newuser(userId, name, profileImage) {
     this.userId = userId;
     this.name = name;
     this.profileImage = profileImage;
