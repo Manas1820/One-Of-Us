@@ -43,10 +43,6 @@ dependencies:
   cloud_firestore: ^0.14.0+2
   animated_floatactionbuttons: ^0.1.0
 
-  
-
-  # firestore
-
 
 
 dev_dependencies:

@@ -46,7 +46,6 @@ class _SplashState extends State<Splash> {
                 "A.U.O.T.S.",
                 "aka",
                 "One Of Us",
-
               ],
 
               // isRepeatingAnimation: false,
