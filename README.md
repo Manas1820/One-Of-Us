@@ -8,15 +8,38 @@
 
 <p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. But online games are fun and why go outdoors when you are addicted to indoor game ...well we have the perfect solution to this problem.<br><br><h3 align="center">Presenting Among Us On The Streets - A.U.O.T.S aka One Of Us</h3><br><br>Play the same game with your offline friends. <br>Watch the video to learn more - </p>
 
-![Design](https://www.figma.com/file/P2IcQrhlDP5ot3Xp8MWhOu/Untitled?node-id=0%3A1)
+
+- Create or join a game
+- Drop your location and the area you want to play on the map
+- Start playing
+
+Under-the-hood
+- 1 imposter for <=5 and >3 a 10 min game
+- 2 imposters for <=10 and >5 a 20 min game
+- 4 imposters for <=20 and >10  a 30 min game
+
+As a normal player
+- complete your tasks
+- If you get kicked off the game, you again need to rush out of the playing circle on the map
+  Once you are out, the others will get a notif that you weren’t the imposter
+
+- If you die by the imposter, you will get a notif that you are dead and you need to rush out of the playing circle on the map. 
+```sh
+  You need to follow a dedicated path, that will appear on the screen and not talk to anyone on your way to tell them about the imposter, common dont you want to play among us live ??
+ ```  
+ 
+Once you are out, the others will get a notif that you were killed and they may choose to hold a meeting, based on the poll a meeting may be held and 
+
+As an imposter, when you are in the vicinity of another player you will get a notif if you want to kill him/her. Accept option will send a notif on the players’ phone and he will be directed outside of the playing circle.
+
+
+
+__We are planning to include leaderboard, in case you want to store your rakings as well !__
 
 ## Tech Stack
 
 - Flutter(Dart) for the app and backend
 - Firebase for the database
-
-## Youtube link
-[https://www.youtube.com/watch?v=JOlgtoS5IWw&feature=youtu.be](https://www.youtube.com/watch?v=JOlgtoS5IWw&feature=youtu.be)
 
 ### API calls to :
 
