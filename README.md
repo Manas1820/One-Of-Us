@@ -8,7 +8,9 @@
 
 <h2 align="center">Description</h2>
 
-<p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. But online games are fun and why go outdoors when you are addicted to indoor game ...well we have the perfect solution to this problem.<br><br><h3 align="center">Presenting Among Us On The Streets - A.U.O.T.S aka One Of Us</h3></p>
+<p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. But online games are fun and why go outdoors when you are addicted to indoor game ...well we have the perfect solution to this problem.<br><br><h3 align="center">Presenting Among Us On The Streets - A.U.O.T.S aka One Of Us</h3><br><br>Play the same game with your offline friends. <br>Watch the video to learn more - </p>
+
+
 
 ## Tech Stack
 
