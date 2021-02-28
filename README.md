@@ -1,9 +1,10 @@
 <h1 align="center">One-Of-Us</h1>
 - [![Join Us](https://img.shields.io/badge/Join%20Us-One%20Of%20Us-red)]()
-- [![Discord Chat](https://img.shields.io/discord/760928671698649098.svg)](https://discord.gg/XmchMUZbdk)
+- [![Discord Chat](https://img.shields.io/discord/760928671698649098.svg)]()
 
 
-
+[![Join Us](https://img.shields.io/badge/Join%20Us-One%20Of%20Us-red)](https://discord.gg/XmchMUZbdk)
+[![Discord Chat](https://img.shields.io/discord/760928671698649098.svg)](https://discord.gg/XmchMUZbdk)
 
 
 <h2 align="center">Description</h2>
