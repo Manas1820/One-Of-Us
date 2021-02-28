@@ -16,7 +16,6 @@ class SelectActivity extends StatefulWidget {
 }
 
 class _SelectActivityState extends State<SelectActivity> {
-  @override
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> _markers = Set<Marker>();
 // for my drawn routes on the map
