@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:MAP/Constants.dart';
+import 'package:MAP/Services/NewGameServices.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -174,37 +174,54 @@ class MapPageState extends State<MapPage> {
           bearing: CAMERA_BEARING);
     }
     return Scaffold(
-      body: loading
-          ? Center(
-              child: Container(
-                height: screenHeight(context),
-                width: screenWidth(context),
-                child: Stack(
-                  children: <Widget>[
-                    GoogleMap(
-                        myLocationEnabled: true,
-                        compassEnabled: false,
-                        tiltGesturesEnabled: true,
-                        zoomControlsEnabled: false,
-                        mapToolbarEnabled: false,
-                        markers: _markers,
-                        circles: _circles,
-                        mapType: MapType.normal,
-                        initialCameraPosition: initialCameraPosition,
-                        onMapCreated: (GoogleMapController controller) {
-                          _controller.complete(controller);
-                          // my map has completed being created;
-                          // i'm ready to show the pins on the map
-                        }),
-                  ],
+        body: loading
+            ? Center(
+                child: Container(
+                  height: screenHeight(context),
+                  width: screenWidth(context),
+                  child: Stack(
+                    children: <Widget>[
+                      GoogleMap(
+                          myLocationEnabled: true,
+                          compassEnabled: false,
+                          tiltGesturesEnabled: true,
+                          zoomControlsEnabled: false,
+                          mapToolbarEnabled: false,
+                          markers: _markers,
+                          circles: _circles,
+                          mapType: MapType.normal,
+                          initialCameraPosition: initialCameraPosition,
+                          onMapCreated: (GoogleMapController controller) {
+                            _controller.complete(controller);
+                            // my map has completed being created;
+                            // i'm ready to show the pins on the map
+                          }),
+                    ],
+                  ),
+                ),
+              )
+            : Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
                 ),
               ),
-            )
-          : Container(
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            ),
-    );
+        floatingActionButton: Constants.prefs.getString("userId") ==
+                data['imposter']
+            ? FloatingActionButton(
+                // isExtended: true,
+                child: Text(
+                  "Kill",
+                  style: TextStyle(color: Colors.white),
+                ),
+                backgroundColor: Colors.red,
+                onPressed: () async {
+                  await catchPlayer(
+                      GeoPoint(
+                          currentLocation.latitude, currentLocation.longitude),
+                      GeoPoint(
+                          currentLocation.latitude, currentLocation.longitude));
+                },
+              )
+            : null);
   }
 }

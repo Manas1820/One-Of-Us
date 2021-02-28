@@ -1,7 +1,5 @@
 import 'package:MAP/Constants.dart';
-import 'package:MAP/Models/UserDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class NewGameServices {
   createGame(roomName) {
@@ -9,7 +7,7 @@ class NewGameServices {
     String id = Constants.prefs.getString('userId');
     String name = Constants.prefs.getString('name');
     doc.set({
-      'roomName': 'alibaba',
+      'roomName': roomName,
       'roomId': doc.id,
       'leader': Constants.prefs.getString('userId'),
       'playerId': FieldValue.arrayUnion([id]),
@@ -23,7 +21,7 @@ class NewGameServices {
     String name = Constants.prefs.getString('name');
     FirebaseFirestore.instance.collection('games').doc(gameId).update({
       'playerId': FieldValue.arrayUnion([id]),
-      'payersName': FieldValue.arrayUnion([name]),
+      'playerName': FieldValue.arrayUnion([name]),
     });
   }
 
@@ -34,5 +32,12 @@ class NewGameServices {
         .collection('players')
         .doc(userId)
         .delete();
+  }
+}
+
+catchPlayer(GeoPoint point1, GeoPoint point2) {
+  if (point1 == point2) {
+    return "Kill";
+    //print("Kill");
   }
 }
