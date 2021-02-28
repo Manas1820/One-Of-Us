@@ -1,5 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:MAP/Constants.dart';
+import 'package:MAP/Screen/home.dart';
+import 'package:MAP/Screen/oAuth.dart';
+import 'package:MAP/onboarding.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -7,7 +13,39 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  // Timer to change the screen in 2.2 seconds
+
+  String _userId = Constants.prefs.getString('userId');
+  String _firsttime = Constants.prefs.getString('firsttime');
+  startTimeout() {
+    return Timer(Duration(milliseconds: 4000), handleTimeout);
+  }
+
+  void handleTimeout() {
+    changeScreen();
+  }
+
+  changeScreen() async {
+    _firsttime == null
+        ? Navigator.push(
+            context, MaterialPageRoute(builder: (context) => OnBoardingPage()))
+        : _userId == null
+            ? Navigator.push(
+                context, MaterialPageRoute(builder: (context) => GauthPage()))
+            : Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CreateRooms()));
+  }
+
   @override
+  void initState() {
+    startTimeout();
+    super.initState();
+    Firebase.initializeApp().whenComplete(() {
+      setState(() {});
+      startTimeout();
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -50,10 +88,7 @@ class _SplashState extends State<Splash> {
 
               // isRepeatingAnimation: false,
               textStyle: TextStyle(
-                  fontSize: 75.0,
-                  fontFamily: "Nightmare",
-                  color: Colors.white
-              ),
+                  fontSize: 75.0, fontFamily: "Nightmare", color: Colors.white),
               textAlign: TextAlign.start,
             ),
             // child: TypewriterAnimatedTextKit(

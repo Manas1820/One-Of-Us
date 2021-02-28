@@ -1,6 +1,7 @@
-import 'package:Runbhumi/services/auth.dart';
-import 'package:Runbhumi/utils/Constants.dart';
 // import 'package:Runbhumi/widget/widgets.dart';
+import 'package:MAP/Constants.dart';
+import 'package:MAP/Screen/home.dart';
+import 'package:MAP/Services/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -37,10 +38,8 @@ class _GoogleOauthState extends State<GoogleOauth> {
               );
             }).then((_) {
               if (Constants.prefs.getString('userId') != null) {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AnimatedBottomBar()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => CreateRooms()));
               }
             });
           },
@@ -54,9 +53,9 @@ class _GoogleOauthState extends State<GoogleOauth> {
                 if (state == false)
                   Padding(
                     padding:
-                    const EdgeInsets.only(left: 16.0, top: 8, bottom: 8),
+                        const EdgeInsets.only(left: 16.0, top: 8, bottom: 8),
                     child: Image(
-                        image: AssetImage('assets/googleicon.png'), width: 24),
+                        image: AssetImage('images/googleicon.png'), width: 24),
                   ),
                 if (state == false)
                   Padding(
@@ -69,7 +68,7 @@ class _GoogleOauthState extends State<GoogleOauth> {
                 if (state)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Loader(),
+                    child: CircularProgressIndicator(),
                   )
               ],
             ),
@@ -91,9 +90,9 @@ SimpleDialog authError(BuildContext context) {
           padding: const EdgeInsets.all(8.0),
           child: Center(
               child: Icon(
-                Feather.info,
-                size: 64,
-              )),
+            Feather.info,
+            size: 64,
+          )),
         ),
         Center(child: Text("Error during authentication")),
       ],

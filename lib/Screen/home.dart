@@ -1,3 +1,7 @@
+import 'package:MAP/Constants.dart';
+import 'package:MAP/Screen/WaitingRoom.dart';
+import 'package:MAP/Services/NewGameServices.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CreateRooms extends StatefulWidget {
@@ -17,8 +21,23 @@ class _CreateRoomsState extends State<CreateRooms> {
           children: [
             Center(
               child: OutlineButton(
-                onPressed: () {
-                  print('Received click');
+                onPressed: () async {
+                  var doc =
+                      FirebaseFirestore.instance.collection('games').doc();
+                  String id = Constants.prefs.getString('userId');
+                  String name = Constants.prefs.getString('name');
+                  doc.set({
+                    'roomName': 'alibaba',
+                    'roomId': doc.id,
+                    'leader': Constants.prefs.getString('userId'),
+                    'playerId': FieldValue.arrayUnion([id]),
+                    'playerName': FieldValue.arrayUnion([name]),
+                    'max': 10
+                  });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => WaitingRoom(roomId: doc.id)));
                 },
                 child: Text(
                   'Create a Game',
