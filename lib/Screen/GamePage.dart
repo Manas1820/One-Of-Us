@@ -7,18 +7,24 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 class MapPage extends StatefulWidget {
+  final String roomId;
   @override
   State<StatefulWidget> createState() => MapPageState();
+  MapPage({Key key, @required this.roomId}) : super(key: key);
 }
 
 class MapPageState extends State<MapPage> {
   Completer<GoogleMapController> _controller = Completer();
   bool _loading = false;
+
+  final db = FirebaseFirestore.instance;
+  StreamSubscription sub;
+  Map data;
+  bool loading = false;
 // for my drawn routes on the map
 
   // to daraw a circle on a map with specific id
   Set<Circle> _circles = Set<Circle>();
-  int _circleIdCounter = 0;
 
   // to set up markers on the screen
   Set<Marker> _markers = Set<Marker>();
@@ -50,17 +56,31 @@ class MapPageState extends State<MapPage> {
       updatePinOnMap();
     });
 
+    sub = db.collection('games').doc(widget.roomId).snapshots().listen((snap) {
+      setState(() {
+        data = snap.data();
+        _circles.add(Circle(
+            circleId: CircleId("circle"),
+            center: LatLng(data['center'].latitude, data['center'].longitude),
+            radius: 100,
+            fillColor: Colors.redAccent.withOpacity(0.5),
+            strokeWidth: 3,
+            strokeColor: Colors.redAccent));
+        getAllMarkers(data['activity']);
+        loading = true;
+      });
+    });
     // set custom marker pins
     localIcons();
     // set the initial location
     setInitialLocation();
     // TODO :Load Firebase
+  }
 
-    // var snap = FirebaseFirestore.instance
-    //     .collection('games')
-    //     .doc('pSGvhvFnXBysXenSEOi4')
-    //     .get();
-    // Map<String, dynamic> data = snap.data();
+  getAllMarkers(List points) {
+    for (int i = 0; i < points.length; i++) {
+      _setMarkers(points[i]);
+    }
   }
 
   void _setMarkers(GeoPoint point) {
@@ -76,20 +96,6 @@ class MapPageState extends State<MapPage> {
         ),
       );
     });
-  }
-
-  void _setCircles(LatLng point, double radius) {
-    final String circleIdVal = 'circle_id_$_circleIdCounter';
-    _circleIdCounter++;
-    print(
-        'Circle | Latitude: ${point.latitude}  Longitude: ${point.longitude}  Radius: $radius');
-    _circles.add(Circle(
-        circleId: CircleId(circleIdVal),
-        center: point,
-        radius: radius,
-        fillColor: Colors.redAccent.withOpacity(0.5),
-        strokeWidth: 3,
-        strokeColor: Colors.redAccent));
   }
 
   // void showPinsOnMap() {
@@ -111,8 +117,6 @@ class MapPageState extends State<MapPage> {
   void localIcons() async {
     sourceIcon = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(devicePixelRatio: 2.5), 'images/driving_pin.png');
-    activityIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5), 'images/driving_pin.pn');
   }
 
   void setInitialLocation() async {
@@ -165,7 +169,7 @@ class MapPageState extends State<MapPage> {
           bearing: CAMERA_BEARING);
     }
     return Scaffold(
-      body: _loading
+      body: loading
           ? Center(
               child: Container(
                 height: screenHeight(context),

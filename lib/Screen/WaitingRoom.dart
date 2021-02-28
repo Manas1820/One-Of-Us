@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:MAP/Constants.dart';
+import 'package:MAP/Screen/GamePage.dart';
 import 'package:MAP/Screen/SelectActivity.dart';
 import 'package:MAP/Screen/SelectZone.dart';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
@@ -70,39 +72,66 @@ class _WaitingRoomState extends State<WaitingRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: loading
-          ? Container(
-              child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text("Waiting Area"),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: ListView.builder(
-                          itemCount: data['playerName'].length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                data['playerName'][index].toString(),
-                              ),
-                            );
-                          }),
-                    ),
+        body: loading
+            ? SafeArea(
+                child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Waiting Area",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text(data['roomId']),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView.builder(
+                              itemCount: data['playerName'].length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    data['playerName'][index].toString(),
+                                  ),
+                                );
+                              }),
+                        ),
+                      ),
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MapPage(roomId: widget.roomId)));
+                        },
+                        child: Text("Start Game"),
+                      )
+                    ],
                   ),
-                ],
-              ),
-            ))
-          : Container(child: Center(child: CircularProgressIndicator())),
-      floatingActionButton: AnimatedFloatingActionButton(
-          //Fab list
-          fabButtons: <Widget>[float1(), float2()],
-          colorStartAnimation: Colors.blueAccent,
-          colorEndAnimation: Colors.red,
-          animatedIconData: AnimatedIcons.menu_close //To principal button
-          ),
-    );
+                ),
+              ))
+            : Container(child: Center(child: CircularProgressIndicator())),
+        floatingActionButton: loading
+            ? AnimatedFloatingActionButton(
+                //Fab list
+                fabButtons:
+                    Constants.prefs.getString('userId') != data['leader']
+                        ? <Widget>[float2()]
+                        : <Widget>[float1(), float2()],
+                colorStartAnimation: Colors.blueAccent,
+                colorEndAnimation: Colors.red,
+                animatedIconData: AnimatedIcons.menu_close //To principal button
+                )
+            : null);
   }
 }
