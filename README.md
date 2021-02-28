@@ -1,6 +1,11 @@
-# MAP
+# One-Of-Us
 
-A new Flutter project.
+## Description
+
+<p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. <br></p>
+
+
+
 
 ## Getting Started
 
