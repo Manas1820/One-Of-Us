@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:dart_random_choice/dart_random_choice.dart';
 import 'package:MAP/Constants.dart';
 import 'package:MAP/Screen/GamePage.dart';
 import 'package:MAP/Screen/SelectActivity.dart';
@@ -79,6 +79,9 @@ class _WaitingRoomState extends State<WaitingRoom> {
                 child: Container(
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: 30,
+                      ),
                       Text(
                         "Waiting Area",
                         style: TextStyle(
@@ -87,7 +90,7 @@ class _WaitingRoomState extends State<WaitingRoom> {
                       SizedBox(
                         height: 30,
                       ),
-                      Text(data['roomId']),
+                      Text("Room ID : " + data['roomId']),
                       SizedBox(
                         height: 30,
                       ),
@@ -107,14 +110,23 @@ class _WaitingRoomState extends State<WaitingRoom> {
                         ),
                       ),
                       FlatButton(
-                        onPressed: () {
-                          Navigator.push(
+                        onPressed: () async {
+                          var imposter = randomChoice(data['playerId']);
+                          await FirebaseFirestore.instance
+                              .collection('games')
+                              .doc(widget.roomId)
+                              .update({'imposter': imposter.toString()});
+                          await Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       MapPage(roomId: widget.roomId)));
                         },
-                        child: Text("Start Game"),
+                        child: Text(
+                          "Start Game",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                       )
                     ],
                   ),

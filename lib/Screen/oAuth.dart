@@ -22,7 +22,7 @@ class _GauthPageState extends State<GauthPage> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
               child: Image(
-                image: AssetImage('images/driving_pin.png'),
+                image: AssetImage('images/images.jpg'),
               ),
             ),
             /*Padding(
@@ -64,7 +64,7 @@ class _GauthPageState extends State<GauthPage> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
               child: Text(
-                "Connecting people through Maps",
+                " Connecting Games To Reality ",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,
@@ -72,15 +72,8 @@ class _GauthPageState extends State<GauthPage> {
                 textAlign: TextAlign.center,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 60.0),
-              child: Text(
-                "join the community of Among US players nearby you",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
+            SizedBox(
+              height: 40,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
