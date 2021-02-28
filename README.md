@@ -36,6 +36,9 @@ As an imposter, when you are in the vicinity of another player you will get a no
 
 __We are planning to include leaderboard, in case you want to store your rakings as well !__
 
+## YOUTUBE LINK
+[https://www.youtube.com/watch?v=JOlgtoS5IWw&feature=youtu.be](https://www.youtube.com/watch?v=JOlgtoS5IWw&feature=youtu.be)
+
 ## Tech Stack
 
 - Flutter(Dart) for the app and backend
