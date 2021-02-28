@@ -15,7 +15,6 @@ class MapPage extends StatefulWidget {
 
 class MapPageState extends State<MapPage> {
   Completer<GoogleMapController> _controller = Completer();
-  bool _loading = false;
 
   final db = FirebaseFirestore.instance;
   StreamSubscription sub;
@@ -81,6 +80,12 @@ class MapPageState extends State<MapPage> {
     for (int i = 0; i < points.length; i++) {
       _setMarkers(points[i]);
     }
+  }
+
+  @override
+  void dispose() {
+    sub.cancel();
+    super.dispose();
   }
 
   void _setMarkers(GeoPoint point) {
