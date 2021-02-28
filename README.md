@@ -1,6 +1,6 @@
-# One-Of-Us
+<h1 align="center">One-Of-Us</h1>
 
-## Description
+<h2 align="center">Description</h2>
 
 <p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. <br></p>
 
