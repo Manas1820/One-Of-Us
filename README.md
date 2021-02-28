@@ -11,17 +11,27 @@
 
 <p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. <br></p>
 
+## 📥 Install
 
+```sh
+flutter pub get
+```
 
-## Getting Started
+## 👷‍♂️ Usage
 
-This project is a starting point for a Flutter application.
+```sh
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Format code
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```sh
+flutter format .
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧪 Test
+
+```sh
+flutter analyze .
+flutter test
+```

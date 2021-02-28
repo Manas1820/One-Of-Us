@@ -37,6 +37,7 @@ dependencies:
   flutter_polyline_points: ^0.1.0
   introduction_screen: ^1.0.9
   animated_text_kit: ^3.1.2
+  fancy_on_boarding: ^1.7.0
   shared_preferences: ^0.5.12
   dart_random_choice: ^0.0.2
 
@@ -71,6 +72,9 @@ flutter:
     - family: Nightmare
       fonts:
         - asset: assets/Nemo Nightmares.ttf
+    - family: Nightmare2
+      fonts:
+        - asset: assets/Nightmare Before Christmas.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
