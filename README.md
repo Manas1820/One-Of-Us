@@ -8,7 +8,7 @@
 
 <h2 align="center">Description</h2>
 
-<p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. <br></p>
+<p align="center">During the pandemic, most of us have grown in dimensions. We do need an outdoor game but with the social-distancing maintained. But online games are fun and why go outdoors when you are addicted to indoor game ...well we have the perfect solution to this problem.<br><br><h6>Presenting Among Us On The Streets - A.U.O.T.S aka One Of Us</h6><br><br></p>
 
 ## Tech Stack
 
