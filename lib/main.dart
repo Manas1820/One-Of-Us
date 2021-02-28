@@ -1,6 +1,5 @@
 import 'package:MAP/onboarding.dart';
 import 'package:MAP/splash.dart';
-import 'package:MAP/rooms.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';

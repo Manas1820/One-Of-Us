@@ -38,6 +38,7 @@ dependencies:
   introduction_screen: ^1.0.9
   animated_text_kit: ^3.1.2
   url_launcher: ^5.7.10
+  fancy_on_boarding: ^1.7.0
   # firestore
 
 
@@ -65,6 +66,9 @@ flutter:
     - family: Nightmare
       fonts:
         - asset: assets/Nemo Nightmares.ttf
+    - family: Nightmare2
+      fonts:
+        - asset: assets/Nightmare Before Christmas.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
